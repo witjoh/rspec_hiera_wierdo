@@ -1,4 +1,31 @@
-# hierarchy from hira.yaml is not respected
+Solved !!!
+
+It was a stupid error in my hiera.yaml. (red cheeks mode ...)
+I got:
+``` yaml
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: './spec/fixtures/hiera/hieradata'
+  :hierarchy:
+    - "%{fqdn}"
+    - 'something'
+```
+This way, the hierarchy is aprt of the :yaml:block, and as such not recognzed by hiera.  The correct version:
+```
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: './spec/fixtures/hiera/hieradata'
+:hierarchy:
+  - "%{fqdn}"
+  - 'something'
+```
+Just leave this for reference....
+
+# hierarchy from hiera.yaml is not respected
 
 [root@docker my_notify]# bundle exec rake spec
 Could not find semantic_puppet gem, falling back to internal functionality. Version checks may be less robust.
