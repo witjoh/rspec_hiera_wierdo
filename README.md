@@ -12,8 +12,8 @@ I got:
     - "%{fqdn}"
     - 'something'
 ```
-This way, the hierarchy is aprt of the :yaml:block, and as such not recognzed by hiera.  The correct version:
-```
+This way, the hierarchy is part of the :yaml:block, and as such not recognized by hiera.  The correct version:
+``` yaml
 ---
 :backends:
   - yaml
